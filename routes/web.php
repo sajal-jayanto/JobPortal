@@ -15,7 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
+
+
+
 
 Route::prefix('home')->group(function() {
 
@@ -41,3 +45,4 @@ Route::prefix('company')->group(function() {
     Route::get('/password/reset/{token}', 'Auth\CompanyResetPasswordController@showResetForm')->name('company.password.reset');
 });
 
+Route::resource('jobpost' , 'JobpostController');

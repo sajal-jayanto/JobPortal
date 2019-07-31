@@ -43,4 +43,12 @@ class Company extends Authenticatable
     {
         $this->notify(new CompanyResetPasswordNotification($token));
     }
+
+    public function jobposts()
+    {
+        return $this->hasMany('App\Jobpost');
+    }
+
+
+
 }
