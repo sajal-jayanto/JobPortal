@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Company;
 use Auth;
 
 class CompanyLoginController extends Controller
@@ -31,9 +32,10 @@ class CompanyLoginController extends Controller
             'email'   => 'required|email',
             'password' => 'required|min:8'
         ]);
-
         if(Auth::guard('company')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember))
         {
+            $company = Company::where('email' , $request->email)->first();
+            session(['company_id' => $company->id]);
             return redirect()->intended(route('company'));
         }
         return redirect()->back()->withInput($request->only('email', 'remember'));

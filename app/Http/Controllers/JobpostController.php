@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Jobpost;
 
 class jobpostController extends Controller
 {
@@ -23,7 +26,7 @@ class jobpostController extends Controller
      */
     public function create()
     {
-        //
+        return view('jobpost-create');
     }
 
     /**
@@ -34,7 +37,26 @@ class jobpostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'salary' => 'required|string',
+            'experience' => 'required|string',
+            'contact' => 'required|string',
+        ]);
+        if (!$validator->fails())
+        {
+            $jobpost = new Jobpost;
+            $jobpost->title = $request->input('title');
+            $jobpost->company_id = session()->get('company_id');
+            $jobpost->description = $request->input('description');
+            $jobpost->salary = $request->input('salary');
+            $jobpost->experience = $request->input('experience');
+            $jobpost->contact = $request->input('contact');
+            $jobpost->save();
+            return redirect()->intended(route('jobpost.index'));
+        }
+        return redirect()->intended(route('jobpost.create'));
     }
 
     /**
