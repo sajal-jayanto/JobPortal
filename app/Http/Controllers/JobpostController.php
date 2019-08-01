@@ -16,7 +16,8 @@ class jobpostController extends Controller
      */
     public function index()
     {
-        //
+        $jobposts = Jobpost::all();
+        return view('all-jobpost')->with('jobpost' , $jobposts);
     }
 
     /**
@@ -67,7 +68,8 @@ class jobpostController extends Controller
      */
     public function show($id)
     {
-        //
+        $jobpost = Jobpost::find($id);
+        return view('jobpost-show')->with('jobpost' , $jobpost);
     }
 
     /**
@@ -78,7 +80,8 @@ class jobpostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jobpost = Jobpost::find($id);
+        return view('jobpost-edit')->with('jobpost' , $jobpost);
     }
 
     /**
@@ -90,7 +93,26 @@ class jobpostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'salary' => 'required|string',
+            'experience' => 'required|string',
+            'contact' => 'required|string',
+        ]);
+        if (!$validator->fails())
+        {
+            $jobpost = Jobpost::find($id);
+            $jobpost->title = $request->input('title');
+            $jobpost->company_id = session()->get('company_id');
+            $jobpost->description = $request->input('description');
+            $jobpost->salary = $request->input('salary');
+            $jobpost->experience = $request->input('experience');
+            $jobpost->contact = $request->input('contact');
+            $jobpost->save();
+            return redirect()->intended(route('jobpost.index'));
+        }
+        return redirect()->intended(route('jobpost.edit' , $id));
     }
 
     /**
@@ -101,6 +123,8 @@ class jobpostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jobpost = Jobpost::find($id);
+        $jobpost->delete();
+        return redirect()->intended(route('jobpost.index'));
     }
 }
