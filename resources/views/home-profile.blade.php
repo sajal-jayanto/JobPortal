@@ -9,10 +9,7 @@
         </div>
     @endif
     
-    <div class="card">
-
-       
-        
+    <div class="card"> 
         <div class="card-header text-center">
                 <h5> User Profile </h5>  
         </div>
@@ -24,8 +21,7 @@
                     </div>
                     <div class="col-10 offset-1 pt-3">
                         <h6> About Me </h6> 
-                        <p >The truth is that About me pages or of course about us pages are almost always one of the most visited pages on any website.
-                            e dealing with if it is a business about page. They love seeing the face behind the blog or business!</p>
+                        <p >{{$user->aboutme}}</p>
                     </div>
                 </div>
                 
@@ -80,12 +76,12 @@
                     </div>
                 </div> 
                 <hr>
-                <img src="/image/one.png" alt="..." class="rounded" height="60" width="60">
-                <img src="/image/two.png" alt="..." class="rounded" height="60" width="60">
-                <img src="/image/three.png" alt="..." class="rounded" height="60" width="60">
+                <a href="{{$user->portfolio}}"><img src="/image/one.png" alt="..." class="rounded" height="60" width="60"></a>
+                <a href="{{$user->github}}"><img src="/image/two.png" alt="..." class="rounded" height="60" width="60"></a>
+                <a href="{{$user->linkedin}}"><img src="/image/three.png" alt="..." class="rounded" height="60" width="60"></a>
                 <br>
                 <div class="text-right pr-2">
-                    <a class="btn btn-primary btn-lg mt-2 mb-2" href="{{ route('user.profile.edit' , $user->id) }}">Edit</a> 
+                    <a class="btn btn-primary btn-md mt-2 mb-2" href="{{ route('user.profile.edit' , $user->id) }}">Edit</a> 
                 </div>
             </div>
         </div>

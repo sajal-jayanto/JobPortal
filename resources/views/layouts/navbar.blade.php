@@ -32,7 +32,7 @@
                         <a class="nav-link" href="/company"> Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('company.profile' , Auth::user()->id) }}">Profile</span></a>
+                        <a class="nav-link" href="{{ route('company.profile' , session()->get('company_id') ) }}">Profile</span></a>
                     </li>
                 @endif
             </ul>

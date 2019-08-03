@@ -59,8 +59,8 @@
                     </div>
                 </div> 
                 <hr>
-                <a href="{{$company->website}}"> <img src="/image/one.png"  class="rounded" height="60" width="60"> </a>
-                <a href="{{$company->linkedin}}"> <img src="/image/three.png"  class="rounded" height="60" width="60"> </a>
+                <a href="{{$company->website}}"><img src="/image/one.png"  class="rounded" height="60" width="60"></a>
+                <a href="{{$company->linkedin}}"><img src="/image/three.png"  class="rounded" height="60" width="60"></a>
                 <br>
                 <div class="text-right pr-2">
                     <a href="{{ route('company.profile.edit' , $company->id) }}" class="btn btn-primary btn-md mt-2 mb-2">Edit</a> 

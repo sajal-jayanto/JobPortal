@@ -10,6 +10,15 @@ use App\Jobpost;
 class jobpostController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+	public function __construct()
+    {
+    	$this->middleware('auth:company')->except(['index', 'show']);
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -17,7 +26,7 @@ class jobpostController extends Controller
     public function index()
     {
         $jobposts = Jobpost::all();
-        return view('all-jobpost')->with('jobpost' , $jobposts);
+        return view('all-jobpost')->with('jobposts' , $jobposts);
     }
 
     /**
