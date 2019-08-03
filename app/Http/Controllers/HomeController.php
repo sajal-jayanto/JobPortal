@@ -31,6 +31,11 @@ class HomeController extends Controller
     public function profile($id)
     {
         $user = User::find($id);
+        if($user->aboutme == "" || $user->linkedin == "" || $user->portfolio == "" || $user->github == "" ||
+        $user->image ==""  || $user->resume == "")
+        {
+            return redirect()->intended(route('user.profile.edit' , $user->id));
+        }
         return view('home-profile')->with('user' , $user);
     }
 

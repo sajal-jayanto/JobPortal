@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+    @if($user->aboutme == "" || $user->linkedin == "" || $user->portfolio == "" || $user->github == "" ||
+        $user->image ==""  || $user->resume == "")
+        <div class="alert alert-danger text-center" role="alert">
+            Please Complete Your Profile !  
+        </div>
+    @endif
     <div class="card">
         <div class="card-header text-center">
             <h5> Edit User Profile </h5>  

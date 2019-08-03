@@ -31,6 +31,10 @@ class CompanyController extends Controller
     public function profile($id)
     {
         $company = Company::find($id);
+        if($company->aboutme == "" || $company->linkedin == "" || $company->logo == "")
+        {
+            return redirect()->intended(route('company.profile.edit' , $company->id));
+        }
         return view('company-profile')->with('company' , $company);
     }
 

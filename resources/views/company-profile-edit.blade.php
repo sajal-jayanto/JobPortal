@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="container">
+    @if($company->aboutme == "" || $company->linkedin == "" || $company->logo == "")
+        <div class="alert alert-danger text-center" role="alert">
+            Please Complete Your Profile !  
+        </div>
+    @endif
     <div class="card">
         <div class="card-header text-center">
             <h5> Edit Company Profile </h5>  
@@ -16,7 +21,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Company Type</label>
-                    <select id="companytype" type="text" class="form-control @error('gender') is-invalid @enderror" name="companytype">
+                    <select id="companytype" type="text" class="form-control"  name="companytype">
                         <option value="Accounting/Finance">Accounting/Finance</option>
                         <option value="Bank">Bank</option>
                         <option value="IT & Telecommunication">IT & Telecommunication</option>
@@ -52,12 +57,12 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Address</label>
-                    <input type="text" class="form-control" name="address" >
+                    <input type="text" class="form-control" name="address" value="{{$company->address}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputAddress">Linkedin</label>
-                <input type="text" class="form-control" id="inputAddress" value="{{$company->address}}" , name="linkedin">
+                <input type="text" class="form-control" id="inputAddress" name="linkedin">
             </div>
             <div class="form-group">
                 <label for="inputAddress2">About Company</label>
