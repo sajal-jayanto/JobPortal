@@ -11,7 +11,7 @@
                 <hr class="my-4">
                 <p class="lead text-center">It uses utility classes for typography and spacing to space content out within the larger container.</p>
                 <div style="text-align: center; width: 90%">
-                    <a class="btn btn-primary btn-md" href="/home" role="button">search jobs</a>
+                <a href="{{ route('showjobs') }}" class="btn btn-primary btn-md"  role="button">search jobs</a>
                 </div>
             </div>
         </div>
