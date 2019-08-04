@@ -34,6 +34,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('company.profile' , session()->get('company_id') ) }}">Profile</span></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('jobpost.index') }}"> Jobs </span></a>
+                    </li>
                 @endif
             </ul>
 

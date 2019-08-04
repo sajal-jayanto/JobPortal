@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Jobpost;
+use App\Company;
 
 class jobpostController extends Controller
 {
@@ -16,7 +17,7 @@ class jobpostController extends Controller
      */
 	public function __construct()
     {
-    	$this->middleware('auth:company')->except(['index', 'show']);
+    	$this->middleware('auth:company');
     }
     /**
      * Display a listing of the resource.
@@ -25,8 +26,9 @@ class jobpostController extends Controller
      */
     public function index()
     {
-        $jobposts = Jobpost::all();
-        return view('all-jobpost')->with('jobposts' , $jobposts);
+        $jobposts = Jobpost::where('company_id', session()->get('company_id'))->get();
+        $company = Company::find(session()->get('company_id')); 
+        return view('all-jobpost')->with('jobposts' , $jobposts)->with('company' , $company);
     }
 
     /**
