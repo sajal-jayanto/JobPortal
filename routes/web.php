@@ -46,10 +46,13 @@ Route::prefix('company')->group(function() {
 });
 
 Route::resource('jobpost' , 'JobpostController');
-/*
-Route::get('/jobpost' , 'Auth\JobpostController@index')->name('jobpost');
-Route::get('/jobpost/creat' , 'Auth\JobpostController@create')->name('jobpost.create');
-Route::post('/jobpost/creat' , 'Auth\JobpostController@store')->name('jobpost.store');
+
+Route::get('/show' , 'ShowJobsController@index')->name('showjobs');
+Route::get('/show/{id}' , 'ShowJobsController@show')->name('show.jobs.id');
+
+
+
+/*Route::post('/jobpost/creat' , 'Auth\JobpostController@store')->name('jobpost.store');
 Route::get('/jobpost/edit/{id}' , 'Auth\JobpostController@edit')->name('jobpost.edit');
 Route::put('/jobpost/edit/{id}' , 'Auth\JobpostController@update')->name('jobpost.update');
 Route::get('/jobpost/show/{id}' , 'Auth\JobpostController@show')->name('jobpost.show');
