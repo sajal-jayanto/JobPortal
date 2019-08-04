@@ -50,10 +50,11 @@ Route::resource('jobpost' , 'JobpostController');
 Route::get('/show' , 'ShowJobsController@index')->name('showjobs');
 Route::get('/show/{id}' , 'ShowJobsController@show')->name('show.jobs.id');
 
+Route::post('/show/{id}' , 'ApplyController@apply')->name('apply');
 
 
-/*Route::post('/jobpost/creat' , 'Auth\JobpostController@store')->name('jobpost.store');
-Route::get('/jobpost/edit/{id}' , 'Auth\JobpostController@edit')->name('jobpost.edit');
+
+/*Route::get('/jobpost/edit/{id}' , 'Auth\JobpostController@edit')->name('jobpost.edit');
 Route::put('/jobpost/edit/{id}' , 'Auth\JobpostController@update')->name('jobpost.update');
 Route::get('/jobpost/show/{id}' , 'Auth\JobpostController@show')->name('jobpost.show');
 Route::delete('/jobpost/{id}' , 'Auth\JobpostController@destroy')->name('jobpost.delete');

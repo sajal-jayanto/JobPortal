@@ -21,9 +21,12 @@
     <div class="container text-center">
         <h5 class="m-2 ">Contact</h5>
         <p> {{$jobpost->contact}}  </p>
-        <hr>
-        <a href="#" class="btn btn-primary mb-5">Apply</a>
+        <hr> 
+        <form method="POST" action="{{route('apply' , $jobpost->id) }}">
+            @csrf
+            <input type="hidden" value="{{$jobpost->id}}" name="post_id" >
+            <button type="submit" class="btn btn-primary mb-5">Apply</button>
+        </form>
     </div>
-    
 </div>
 @endsection
