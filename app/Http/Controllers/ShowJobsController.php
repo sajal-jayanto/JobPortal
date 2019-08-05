@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Jobpost;
+use DB; 
+Use App\Jobpost;
 
 class ShowJobsController extends Controller
 {
     public function index()
     {
-        $jobpost = Jobpost::all(); 
+        $jobpost = DB::table('jobposts')->join('companies' , 'jobposts.company_id' ,'=' , 'companies.id')
+        ->select('jobposts.id' ,'jobposts.title' , 'jobposts.description', 'jobposts.salary', 'jobposts.experience', 'jobposts.contact' , 'jobposts.created_at' ,'companies.companyname' , 'companies.logo') 
+        ->get();
         return view('all-jobpost-user')->with('jobposts' , $jobpost);
     }
 

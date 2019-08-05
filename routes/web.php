@@ -46,11 +46,11 @@ Route::prefix('company')->group(function() {
 });
 
 Route::resource('jobpost' , 'JobpostController');
-
 Route::get('/show' , 'ShowJobsController@index')->name('showjobs');
 Route::get('/show/{id}' , 'ShowJobsController@show')->name('show.jobs.id');
-
+Route::get('/showapplicant/{id}' , 'ShowApplicantContorller@showapplicant')->name('show.applicant.id');
 Route::post('/show/{id}' , 'ApplyController@apply')->name('apply');
+Route::get('/showapplicant/downlode/{id}' , 'ShowApplicantContorller@downlode')->name('downlode');
 
 
 

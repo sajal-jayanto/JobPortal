@@ -13,11 +13,7 @@
                         <a href="{{ route('jobpost.show' , $post->id) }}"><h5 class="card-title">{{$post->title}}</h5></a>
                         <small> by {{$company->companyname}} </small>
                         <small> <p class="card-text">{{$post->created_at}}</p> </small>
-                    </div>
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-1">
-                        <a href="{{ route('jobpost.show' , $post->id) }}" class="btn btn-primary">view</a>
+                        <a href="{{ route('show.applicant.id' , $post->id) }}" class="btn btn-primary mt-2">Show Applicant</a>
                     </div>
                 </div>
             </div>

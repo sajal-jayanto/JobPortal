@@ -33,6 +33,4 @@ class ApplyController extends Controller
         $apply->save();
         return redirect()->intended(route('apply' , $request->input('post_id')));
     }
-
-
 }
