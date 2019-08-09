@@ -70,3 +70,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Jobportal
+
+Here company can register and post ther jobs 
+also user can register and apply for jobs.
+
+
+
+
+
